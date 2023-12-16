@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name="USER_TBL")
 @Getter
@@ -17,4 +19,5 @@ public class User {
     private String lname;
     private String email;
     private String pwd;
+
 }
