@@ -4,6 +4,7 @@ import in.springboot.Blog_Application.binding.LoginForm;
 import in.springboot.Blog_Application.binding.RegistrationForm;
 import in.springboot.Blog_Application.entity.User;
 import in.springboot.Blog_Application.repo.UserRepo;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private HttpSession session;
     @Override
     public boolean registration(RegistrationForm form) {
 
@@ -43,6 +47,8 @@ public class UserServiceImpl implements UserService {
         if(user == null){
             return false;
         }
+
+        session.setAttribute("userId", user.getId());
 
         return true;
     }
